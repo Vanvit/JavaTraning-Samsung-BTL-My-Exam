@@ -1,0 +1,28 @@
+************************Git GUIDE ***********************
+
+- git init 
+- git add .
+- git commit -m "ten file"
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "vanvit13011999@gmail.com"
+  git config --global user.name "VanNguyen0113"
+- run again : - git commit -m "ten file"
+- coppy folder: "Project_Human_Resoure_Management_Nhom7" -> Tao repo , paste vao repo name
+
+- git remote add origin https://github.com/Vanvit/Project_Human_Resoure_Management_Nhom7.git --> paste link tu repo
+
+- git push origin master
+
+----------sj&------------------------------
+- git clone https://github.com/Vanvit/Project_Human_Resoure_Management_Nhom7.git
+
+- edit j do
+
+- git add.
+-git commit -m "Edit file"
+-  git push origin master
+----> Done

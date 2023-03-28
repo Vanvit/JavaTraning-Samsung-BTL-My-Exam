@@ -1,0 +1,79 @@
+CREATE DATABASE HR_MANEGERMENT;
+USE HR_MANEGERMENT;
+
+CREATE TABLE EMPLOYEE(
+	IdEmp INT  PRIMARY KEY AUTO_INCREMENT,
+	NameEmp VARCHAR(200) NOT NULL,
+	Gender  ENUM ('Male', 'Female'),
+	IdCard VARCHAR(200) UNIQUE,
+	Birthday DATE, 
+	Address VARCHAR(200),
+	Phone VARCHAR(200) NOT NULL,
+	Email VARCHAR(200) UNIQUE NOT NULL,
+	Position ENUM('MANAGER','FRESHER','SELLER','OPERATOR','PROGRAMER','TESTER'),
+	-- 'MANAGER': 90000000; FRESHER 10000000; SELLER: 150000000; OPERATOR: 25000000; PROGRAMER: 35000000; TESTER: 27000000 
+	Salary DOUBLE NOT NULL,
+	Tax DOUBLE NOT NULL,
+	
+	IsManager ENUM ('1'),	
+	TypeContract ENUM ('Partime', 'Fulltime') DEFAULT('Fulltime'),
+	JoinDate DATE NOT NULL DEFAULT(NOW()),
+	Status ENUM ('Active', 'Deactive') DEFAULT('Active'),
+	Level ENUM ('university', 'college') DEFAULT('university'),
+	Country VARCHAR(200)  DEFAULT('Việt Nam'),
+	
+	Dep_ID INT,
+	FOREIGN KEY (Dep_ID) REFERENCES DEPARTMENT(IdDep),	
+	UNIQUE (IsManager,Dep_ID)
+);
+
+
+INSERT INTO EMPLOYEE (NameEmp, Gender, IdCard, Birthday, Address, Phone, Email,Position, Salary,Tax, IsManager,
+TypeContract, JoinDate, Status, Level, Country, Dep_ID) 
+VALUES 
+		('Nguyễn Văn Hải', 'Male', '02406478678', '1990-01-01', 'Hà nội', '0901234567', 'hai@gmail.com','MANAGER', 90000000,18500000, 1,'Fulltime', '2020-01-01', 'Active', 'university', 'Việt Nam', 1),
+		('Trần Thị Bích', 'Female', '0240647192', '1995-05-05', 'Bắc ninh', '0909876543', 'bich01@gmail.com','FRESHER',10000000,50000, null,'Partime', '2023-01-01', 'Active', 'college', 'Việt Nam', 2),
+		('Phạm Văn Cường', 'Female', '02404676253', '1992-03-15', 'Bắc giang', '0904567891', 'cuong@gmail.com','SELLER',150000000,39500000,1,'Fulltime', '2020-02-01', 'Deactive','university', 'Việt Nam', 2),
+		('Lê Thị Dung', 'Female', '02406748846', '1997-11-20', 'Hà nội', '0903216549', 'trang@gmail.com','OPERATOR',25000000,1650000, null,'Partime', '2023-04-01', 'Active', 'college', 'Việt Nam', 3),
+		('Đỗ Văn Bảo', 'Male', '02406784341', '1993-07-10', 'Thanh hóa', '0906549873', 'lan@gmail.com','TESTER', 27000000,1950000, 1,'Fulltime', '2018-05-01', 'Active', 'university', 'Việt Nam', 4),
+		('Nguyễn Văn Khoa', 'Male', '02404678678', '1990-01-01', 'Hà nội', '0901234567', 'anh@gmail.com','PROGRAMER', 70000000,12450000, 1,'Fulltime', '2018-05-01', 'Active', 'university', 'Việt Nam', 6),
+		('Trần Thị Hoa', 'Female', '0240674192', '1995-05-05', 'Bắc ninh', '0909876543', 'hoa@gmail.com','FRESHER',10000000,50000, null,'Fulltime', '2018-05-01', 'Active', 'college', 'Việt Nam', 4),
+		('Phạm Văn Hung', 'Female', '02440676253', '1992-03-15', 'Bắc giang', '0904567891', 'mai@gmail.com','FRESHER',10000000,50000,1,'Partime', '2023-04-01', 'Active','university', 'Việt Nam', 5),
+		('Lê Thị Dung', 'Female', '02406784846', '1997-11-20', 'Hà nội', '0903216549', 'dung@gmail.com','SELLER',150000000,39500000, NULL,'Fulltime', '2018-05-01', 'Active', 'college', 'Việt Nam',null),
+		('Đỗ Văn Khang', 'Male', '02440678341', '1993-07-10', 'Thanh hóa', '0906549873', 'khang@gmail.com','FRESHER', 35000000,3550000, null,'Partime', '2023-04-01', 'Active', 'university', 'Việt Nam', 6);
+
+
+CREATE TABLE DEPARTMENT(
+	IdDep INT  PRIMARY KEY AUTO_INCREMENT,
+	NameDep VARCHAR(200) NOT NULL,
+	PhoneDep VARCHAR(200) NOT NULL
+	
+);
+
+INSERT INTO DEPARTMENT(NameDep, PhoneDep) 
+VALUES
+		('Department management', '098888666'),
+		('Board of manager', '098777222'),
+		('Production Board', '0347222666'),
+		('Human resouces department', '0355565888'),
+		('Marketing', '034445433'),
+		('Software Development Department', '035588'),
+		('Tester Department', '0357575888'),
+		('Training Department', '035655888'),
+		('Pulic Relations Department', '037575888'),
+		('Accounting Department', '035657575888'),
+		('Finance Department', '035657575888');
+		
+
+CREATE TABLE ADMIN(
+	IdAdmin INT  PRIMARY KEY AUTO_INCREMENT,
+	UserName VARCHAR(200) NOT NULL,
+	Password VARCHAR(200) NOT NULL,
+	FullName VARCHAR(200) NOT NULL
+);
+
+INSERT INTO ADMIN(UserName, Password, FullName) 
+VALUES
+		('1', '1', 'Van');
+		
+	
