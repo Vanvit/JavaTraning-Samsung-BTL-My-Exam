@@ -26,3 +26,6 @@ Run
 -git commit -m "Edit file"
 -  git push origin master
 ----> Done
+
+-- Keo data tu Repo ve Local
+- git pull origin master
